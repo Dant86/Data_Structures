@@ -280,7 +280,7 @@ class Binary_Search_Tree:
         if node_to_remove.l_child is None and node_to_remove.r_child is None:
             self.remove_leaf(del_val)
         else:
-            biggest_left = self.find_biggest_left
+            biggest_left = self.find_biggest_left()
             node_to_remove.value = biggest_left
             self.remove_leaf(biggest_left)
 
