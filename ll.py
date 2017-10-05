@@ -93,7 +93,7 @@ class LinkedList:
         else:
             raise ValueError("Index >= length of list")
 
-    def itemAt(self, index):
+    def __getitem__(self, index):
         if index < 0:
             raise ValueError("Index < 0")
         elif index >= 0 and index < self.length:
