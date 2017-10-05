@@ -139,8 +139,8 @@ class Stack:
         self.values.remove_from_front()
         return i
 
-    def itemAt(self, index):
-        return self.values.itemAt(index)
+    def __getitem__(self, index):
+        return self.values.__getitem__(index)
 
     def indexOf(self, value):
         return self.values.indexOf(value)
@@ -164,8 +164,8 @@ class Queue:
         self.values.remove_from_front()
         return i
 
-    def itemAt(self, index):
-        return self.values.itemAt(index)
+    def __getitem__(self, index):
+        return self.values.__getitem__(index)
 
     def indexOf(self, value):
         return self.values.indexOf(value)
