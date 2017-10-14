@@ -1,4 +1,4 @@
-from ll import HashTable
+from basic_structures import HashTable
 from nltk.corpus import words
 
 table = HashTable(10)
@@ -9,3 +9,6 @@ table.add("foo", 1)
 print(table)
 
 print(table["foo"])
+
+table.remove("aba")
+print(table)

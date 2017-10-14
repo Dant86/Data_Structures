@@ -317,6 +317,14 @@ class HashTable:
                 return bucket[i][1]
         return None
 
+    def remove(self, key):
+        hashed_key = self.hash(key)
+        bucket = self.buckets[hashed_key]
+        for i in range(len(bucket)):
+            if bucket[i][0] == key:
+                self.buckets[hashed_key].remove(i)
+                return
+
     def __str__(self):
         retVal = ""
         for bucket in self.buckets:
