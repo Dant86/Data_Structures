@@ -311,10 +311,8 @@ class HashTable:
 
     def __getitem__(self, key):
         hashed_key = self.hash(key)
-        print(hashed_key)
         bucket = self.buckets[hashed_key]
         for i in range(len(bucket)):
-            print(bucket[0][0])
             if bucket[i][0] == key:
                 return bucket[i][1]
         return None
