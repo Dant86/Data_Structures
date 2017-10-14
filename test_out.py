@@ -1,10 +1,11 @@
-from ll import Binary_Search_Tree
+from ll import HashTable
+from nltk.corpus import words
 
-foo = Binary_Search_Tree()
-foo.add(5)
-foo.add(7)
-foo.add(3)
-print(len(foo))
-print(foo.height())
-foo.delete(3)
-print(len(foo))
+table = HashTable(10)
+
+for i in range(20):
+	table.add(words.words()[i], 1)
+table.add("foo", 1)
+print(table)
+
+print(table["foo"])

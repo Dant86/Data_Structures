@@ -98,7 +98,7 @@ class LinkedList:
             raise ValueError("Index < 0")
         elif index >= 0 and index < self.length:
             temp = self.head
-            for i in range(index - 1):
+            for i in range(index):
                 temp = temp.next
             return temp.value
         elif index >= self.length:
@@ -287,3 +287,40 @@ class Binary_Search_Tree:
     def __len__(self):
         temp = self.root
         return self.get_length(temp)
+
+class HashTable:
+
+    def __init__(self, size):
+        self.buckets = [LinkedList() for i in range(size)]
+        self.size = size
+
+    def hash(self, key):
+        key = str(key)
+        final_hash = 17
+        for char in key:
+            final_hash = (37 * final_hash) + ord(char)
+        return final_hash % self.size
+
+    def add_tuple(self, kv_pair):
+        hashed_key = self.hash(kv_pair[0])
+        self.buckets[hashed_key].append(kv_pair)
+
+    def add(self, key, value):
+        kv_pair = (key, value)
+        self.add_tuple(kv_pair)
+
+    def __getitem__(self, key):
+        hashed_key = self.hash(key)
+        print(hashed_key)
+        bucket = self.buckets[hashed_key]
+        for i in range(len(bucket)):
+            print(bucket[0][0])
+            if bucket[i][0] == key:
+                return bucket[i][1]
+        return None
+
+    def __str__(self):
+        retVal = ""
+        for bucket in self.buckets:
+            retVal += str(bucket) + "\n"
+        return retVal
