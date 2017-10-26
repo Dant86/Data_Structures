@@ -501,3 +501,42 @@ class HashTable:
         for bucket in self.buckets:
             retVal += str(bucket) + "\n"
         return retVal
+
+class Graph:
+
+    def __init__(self, filename=None):
+        if filename is None:
+            self.amt_vertices = 0
+            self.adj_list = [LinkedList() for i in range(amt_vertices)]
+        else:
+            with open(filename) as in_file:
+                lines = [line.strip("\n") for line in in_file.readlines()]
+                first_line = lines[0]
+                amt_vertices = int(first_line)
+                self.amt_vertices = int(first_line)
+                self.adj_list = [LinkedList() for i in range(amt_vertices)]
+                for line in lines[1:]:
+                    nums = [int(num) for num in line.split(" ")]
+                    self.mk_edge(nums[0], nums[1])
+
+    def mk_edge(self, begin, end):
+        self.adj_list[begin].append(end)
+
+    def amt_vertices(self):
+        return len(self.adj_list)
+
+    def amt_edges(self):
+        amt = 0
+        for adj in self.adj_list:
+            amt += len(adj)
+        return amt
+
+    def __str__(self):
+        ret_val = ""
+        for adj in self.adj_list:
+            ret_val += str(adj) + "\n"
+        return ret_val
+
+
+
+
